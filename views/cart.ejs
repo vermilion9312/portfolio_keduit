@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart</title>
+    <link rel="stylesheet" type="text/css" href="css/cart.css">
+    <link rel="stylesheet" type = "text/css" href="css/reset.css" />
+</head>
+
+<body>
+
+    <%- include ('header.ejs') %>
+    <%if(loginState){%>
+    <form action="cart"> 
+    <div class="wallpaper">
+        <div class="wholebody">
+            <div class="h3div">
+                <h3>
+                    장바구니
+                </h3>
+            </div>
+            <div class="content_box" style="width: 1160px;">
+                <div class="main1" style="border-bottom: 1px solid black;">
+                    <div>구매 가능한 상품 
+                        <span style="color: #f70061; font-weight: bold;"><%=cartDB.length%></span>
+                    </div>
+                    <div class="wrap_part">
+                        <div class="detail_part">
+                            <input class="checkbox" name="check_choose" type="checkbox" checked
+                                style="font-weight: bold;">전체선택
+                        </div>
+                        <button class="selDelBtn"
+                            style="color: #333; background-color: #fff; border-color: #ccc;">
+                            <a href="empty"> 선택삭제</a>
+                        </button>
+                    </div>
+                    <div class="warp_part_bottom">
+                        <div class="wrap_part_2">
+                            <input class="checkbox" type="checkbox" checked>
+                            <div>
+                                <button class="wrap_part_btn"><a href="#">바로구매</a></button> 
+                                <button class="wrap_part_btn"> <a href="#">   삭제하기 </a></button>
+                            </div>
+                        </div>
+    <%for(i=0; i<cartDB.length; i++){%>
+        <% var cartpercent = cartDB[i]["cartdscntRate"] * 100%>
+        <% var returncartper =  cartDB[i]["cartBuyPrdPrice"] *(1-  cartDB[i]["cartdscntRate"])  %>
+        <% var point = cartDB[i]["cartsalesQuantity"] * 1/100%>
+                        <div style="display: flex; flex-direction:column; padding-bottom: 21px; ">
+                            <img  alt ="cloth" class ="img" src=<%=cartDB[i]["cartPrdImage"]%> >
+                            <div style="margin-left: 20px;">
+                                <span style="font-weight: bold; "> <%=cartDB[i]["cartbrndName"]%></span><br>
+                                <span> <%=cartDB[i]["cartPrdName"]%> </span><br><br>
+                                <% if (cartDB[i]["cartsaleOrNot"]== true){%>
+                                    <span> # sale </span>
+                                 <%}%>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="size_box">
+                        <div class="size">사이즈</div>
+                        <div style="font-weight: bold;">free</div>
+                    </div>
+                    <div class="mid_spans ">
+                        <div class="friend">친구 할인</div>
+                        <div class="coupon_btn">
+                        <div class="fri_btn">친구 할인코드 미적용 상품</div>
+                        </div>
+                    </div>
+                    <div class="up_spans">
+                        <div class="spans">
+                            <span style="color: #f70061; font-weight: bold;"><%=cartpercent %>%</span>
+                            <span style="color: #f70061; font-weight: bold;"> <%=returncartper %> </span>
+                            <span> <%=cartDB[i]["cartsalesQuantity"]%> </span>
+                        </div>
+                        <div class="count_btn">
+                            <span>
+                                <button>-</button>
+                            </span>
+                            <input type="number" placeholder="1">
+                            <span>
+                                <button>+</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="empty"></div>
+                <!--  -->
+                <!--  -->
+                <div class="main2">
+                    <h4> 나의 결제 예상 금액은?</h4>
+                    <table class="order_upper">
+                        <tr class="order_detail">
+                            <td>주문상품 수</td>
+                            <td>1 </td>
+                        </tr>
+                        <tr class="order_detail">
+                            <td>주문금액 </td>
+                            <td style="text-align: right;"> <%=cartDB[i]["cartBuyPrdPrice"]%> </td>
+                        </tr>
+                        <tr class="order_detail">
+                            <td>할인금액</td>
+                            <td>-0원</td>
+                        </tr>
+                        <tr class="order_detail">
+                            <td>적립 예상 마일리지</td>
+                            <td> <%=point%> </td>
+                        </tr>
+                        <tr class="order_detail">
+                            <td>결제 예상 금액</td>
+                            <td> <%=cartDB[i]["cartsalesQuantity"]%></td>
+        <%}%>
+                        </tr>
+                    </table>
+                    <button class="order_btn"> 주문하러 가기</button>
+                </div>
+            </div class="wholebody">
+        </div>
+    </div class="wallpaper">
+    </form>
+    <%} else{%>
+        <div class="login-first" align="center">
+        <h1>로그인 먼저 해주세요.</h1>
+    </div>
+    <%}%> 
+    <%- include ('footer.ejs') %>
+</body>
+
+</html>

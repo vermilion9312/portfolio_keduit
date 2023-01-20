@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/icon" sizes="16x16" href="https://www.seoulstore.com/images/favicon/favicon_16px.jpg">
+    <link rel="icon" type="image/icon" sizes="32x32" href="https://www.seoulstore.com/images/favicon/favicon_32px.jpg">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://www.seoulstore.com/images/favicon/favicon_152px.png">
+    <script src="https://kit.fontawesome.com/0a218c2ef9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type = "text/css" href="css/reset.css" />
+    <link rel="stylesheet" type = "text/css" href="css/layout.css" />
+    <title>서울스토어</title>
+  </head>
+  <body>
+
+
+<!--prdData 순서 섞는 함수-->
+<%function sortPrdByKey(prdData) {
+    for(var i=0; i<prdData.length; i++) {
+      var maxNo = prdData[i]["key"];
+      var maxIndex = i;
+
+      for(var j=i; j<prdData.length; j++) {
+          if(maxNo < prdData[j]["key"]) {
+              maxNo = prdData[j]["key"];
+              maxIndex = j;
+          }
+      }
+
+      var temp = prdData[i];
+      prdData[i] = prdData[maxIndex];
+      prdData[maxIndex] = temp;
+  }
+};%>
+
+
+<%function prdOriginPrice(prdData) {
+  for(i=0; i<prdData.length; i++){
+    var isInclude = prdData[i]["prdPrice"].includes(",");
+  if(isInclude){
+    var reducdComma = prdData[i]["prdPrice"].split(",");
+    prdData[i]["prdPrice"] = reducdComma.join("");
+    prdData[i]["prdPrice"] = prdData[i]["prdPrice"];
+  }
+}};%>
+
+<% function sortPrdBySales(prdData) {
+  for(var i=0; i<prdData.length; i++) {
+      var maxNo = prdData[i]["salesQuantity"];
+      var maxIndex = i;
+
+      for(var j=i; j<prdData.length; j++) {
+          if(maxNo < prdData[j]["salesQuantity"]) {
+              maxNo = prdData[j]["salesQuantity"];
+              maxIndex = j;
+          }
+      }
+
+      var temp = prdData[i];
+      prdData[i] = prdData[maxIndex];
+      prdData[maxIndex] = temp;
+  }
+}%>
+
+    <%prdOriginPrice(prdData)%>
+    <%- include ('header.ejs') %>
+    <section class="banner">
+    <div>
+      <a href="#"><img src="https://images.seoulstore.com/design/eb218900541c32c73225509bcff663b3.png"></a>
+    </div>
+    <div class="circles">
+        <ul>
+            <a href="#"><li class="default"></li></a>
+            <a href="#"><li></li></a>
+            <a href="#"><li></li></a>
+            <a href="#"><li></li></a>
+            <a href="#"><li></li></a>
+            <a href="#"><li></li></a>
+            <a href="#"><li></li></a>
+            <a href="#"><li></li></a>
+        </ul>
+    </div>
+    </section>
+
+    <section class="grid-wrapper">
+      <div>
+        <a href="#"><img src="https://images.seoulstore.com/design/2cda63a8bc1c3a39664493f9bd00e0e6.jpg" /></a>
+      </div>
+      <div>
+        <a href="#"><img src="https://images.seoulstore.com/design/7d2116f43fc8ea1399963d5425292fff.jpg" /></a>
+      </div>
+      <div>
+        <a href="#"><img src="https://images.seoulstore.com/design/e08694c67bf82f42fb18bc213f515389.jpg" /></a>
+      </div>
+      <div>
+        <a href="#"><img src="https://images.seoulstore.com/design/fb2554e18eff60cab1a3914c2b968c52.jpg" /></a>
+      </div>
+      <div>  
+        <a href="#"><img src="https://images.seoulstore.com/design/95d045bbd36d068fddfbaf67bff62e5f.jpg" /></a>
+      </div>
+      <div>
+        <a href="#"><img src="https://images.seoulstore.com/design/768434dbe7642fa370551a81cd52bbf9.jpg" /></a>
+      </div>  
+      <div>
+        <a href="#"><img src="https://images.seoulstore.com/design/0efb4f67b305be3335d70801ce064266.jpg" /></a>
+      </div>
+      <div>  
+        <a href="#"><img src="https://images.seoulstore.com/design/ae29f03612096a41f2e0e4e8597d6077.jpg" /></a>
+      </div>
+      <div>  
+        <a href="#"><img src="https://images.seoulstore.com/design/70ec8bbcf3b5861fe687bb16523d1c36.jpg" /></a>
+      </div>
+      <div>  
+        <a href="#"><img src="https://images.seoulstore.com/design/af9a17b09daf50621821defa3aa4b6e5.png" /></a>
+      </div>
+    </section>
+
+    <section class="selcetion">
+      <div>
+        <a href="#"><img src="https://images.seoulstore.com/design/cfa0999b23413147ffeaa160578cdca3.jpg"></a>
+      </div>
+      <div>
+        <a href="#"><img src="https://images.seoulstore.com/design/c2f9f8c08987cebb03c67b703f73c2e3.jpg"></a>
+      </div>
+      <div>
+        <a href="#"><img src="https://images.seoulstore.com/design/006f02a128dfc46a71a5c8d574539be7.jpg"></a>
+      </div>
+    </section>
+    
+    <%sortPrdBySales(prdData)%>
+    <section class="product-rank">
+      <div class="title">
+        <h3>상품 랭킹</h3>
+        <div class="see-all">
+          <p>전체보기</p>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
+
+      <div class="product-rank-div">
+        <%for(i=0; i<4; i++){%>
+          <%var prdPrice = prdData[i]["prdPrice"]/1;
+            var saleRatio = Math.floor((prdData[i]["dscntRate"] * 100))
+            var dscntPrice = prdPrice - parseInt(prdPrice * (prdData[i]["dscntRate"]/1))
+          %>
+
+        <form action="addCartPro">
+          <div class="product">
+            <a href="#"><img src=<%=prdData[i]["prdImg"]%>></a>
+            <input type="hidden" name="key" value="<%=prdData[i]["key"]%>">
+            <button onclick="location.href='addCartPro'" type="submit" class="go-cart"><i class="fa-solid fa-cart-plus fa-lg"></i></button>
+            <p class="rank-txt"><%=i+1%>위</p>
+            <p class="rank-underline"></p>
+            <a href="#"><p class="rank-txt-brand"><%=prdData[i]["brndName"]%></p></a>
+            <a href="#"><p class="rank-subtxt"><%=prdData[i]["prdName"]%></p></a>
+            <div class="price-container">
+              <p class="rank-subtxt price-sale"><%=saleRatio%>% <%=dscntPrice.toLocaleString()%></p>
+              <p class="rank-subtxt price"><%=prdPrice.toLocaleString()%></p>
+            </div>
+            <div class="label">
+              <%if(prdData[i]["newOrNot"]){%>
+                <div class="new">
+                  <p>신상</p>
+                </div>
+                <%}%>
+                <%if(prdData[i]["saleOrNot"]){%>
+                  <div class="sale1">
+                  <p>세일</p>
+                </div>
+                <%}%>
+            </div>
+            <div class="review_score">
+              <div class="review_score">
+                <i class="fa-solid fa-heart fa-sm"></i>
+                <p class="review_score_txt"><%=prdData[i]["likesAmt"]%></p>
+              </div>
+            </div>
+          </div>
+        </form>
+      <%}%>
+      </div>
+    </section>
+
+    <%sortPrdByKey(prdData)%>
+    <section class="product-rank">
+      <div class="title">
+        <h3>단독 상품</h3>
+        <div class="see-all">
+          <p>전체보기</p>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
+      <div class="product-rank-div">
+        <%for(i=0; i<prdData.length; i++){%>
+          <%var prdPrice = prdData[i]["prdPrice"]/1;
+            var saleRatio = Math.floor((prdData[i]["dscntRate"] * 100))
+            var dscntPrice = prdPrice - parseInt(prdPrice * (prdData[i]["dscntRate"]/1))
+          %>
+          <form action="addCartPro">
+            <div class="product">
+              <a href="#"><img src=<%=prdData[i]["prdImg"]%>></a>
+              <input type="hidden" name="key" value="<%=prdData[i]["key"]%>">
+              <button onclick="location.href='addCartPro'" type="submit" class="go-cart"><i class="fa-solid fa-cart-plus fa-lg"></i></button>
+              <p class="rank-txt"><%=i+1%>위</p>
+              <p class="rank-underline"></p>
+              <a href="#"><p class="rank-txt-brand"><%=prdData[i]["brndName"]%></p></a>
+              <a href="#"><p class="rank-subtxt"><%=prdData[i]["prdName"]%></p></a>
+              <div class="price-container">
+                <p class="rank-subtxt price-sale"><%=saleRatio%>% <%=dscntPrice.toLocaleString()%></p>
+                <p class="rank-subtxt price"><%=prdPrice.toLocaleString()%></p>
+              </div>
+              <div class="label">
+                <%if(prdData[i]["newOrNot"]){%>
+                  <div class="new">
+                    <p>신상</p>
+                  </div>
+                  <%}%>
+                  <%if(prdData[i]["saleOrNot"]){%>
+                    <div class="sale1">
+                    <p>세일</p>
+                  </div>
+                  <%}%>
+              </div>
+              <div class="review_score">
+                <div class="review_score">
+                  <i class="fa-solid fa-heart fa-sm"></i>
+                  <p class="review_score_txt"><%=prdData[i]["likesAmt"]%></p>
+                </div>
+              </div>
+            </div>
+          </form>
+      <%}%>
+      </div>
+    </section>
+
+
+    <section class="popular-category">
+      <div class="title">
+        <h3>인기 카테고리</h3>
+        <div class="see-all">
+          <p>전체보기</p>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
+      <div class="imgs">
+        <div><a href="#"><img src="https://images.seoulstore.com/design/4783a519cc826d4cba5a42fde27ba2db.png"></a></div>
+        <div><a href="#"><img src="https://images.seoulstore.com/design/332be8e6233fa3b3e4549597b42e6d0d.png"></a></div>
+        <div><a href="#"><img src="https://images.seoulstore.com/design/c9f9549d23219533bf3a89740afddb10.png"></a></div>
+        <div><a href="#"><img src="https://images.seoulstore.com/design/b82ffb942bffebe4ca8266a6d21b8daf.png"></a></div>
+        <div><a href="#"><img src="https://images.seoulstore.com/design/4d53ba5393ab681bf0f94cbee8d1b86c.png"></a></div>
+        <div><a href="#"><img src="https://images.seoulstore.com/design/169ec4ab48d67638f06a92fba786f2b5.png"></a></div>
+      </div>
+    </section>
+
+    
+    <%- include ('footer.ejs') %>
+  </body>
+</html>

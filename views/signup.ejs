@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include("top.ejs") -%>
+    <div align="center">
+        <form action="add_info">
+            <table>
+                <tr>
+                    <td><img src="/img/signup.png" alt="signup" width="340px"></td>
+                </tr>
+                <tr>
+                    <td><strong>일반 회원가입</strong></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="일반 회원 가입하기"
+                            style="width: 368px; height: 40px; background-color: #333333; color:white; border-radius: 3px; font-size: 16px;"
+                            align="center">
+                            <input type="hidden" name="check" value="<%= false %>">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <%- include("sns_login") -%>
+</body>
+
+</html>

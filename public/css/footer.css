@@ -1,0 +1,104 @@
+.information1 {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #999999;
+  }
+  
+  .information {
+    border-bottom: 1px solid #eee !important;
+    margin-top: 31px;
+  }
+  
+  strong {
+    font-weight: 500;
+  }
+  
+  footer {
+    width: 1120px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+  
+  .information2 {
+    margin-top: 15px;
+  }
+  
+  .information2,
+  .information2 div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .information2 div {
+    margin-right: 80px;
+  }
+  
+  .information2 img {
+    height: 40px;
+    margin-right: 16px;
+  }
+  
+  .information2 button {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 3px 10px;
+  }
+  
+  .information2 button:hover {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: rgb(228, 228, 228);
+    padding: 3px 10px;
+  }
+  
+  .footer-top{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .footer-top p{
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 16px;
+  
+  }
+  
+  .footer-top div {
+    width: 25%;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .icons {
+    display: flex;
+  }
+  
+  .icons i {
+    margin-right: 20px;
+  }
+  
+  .sub {
+    font-size: 14px;
+  }
+  
+  .FaQ button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer-btn{
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    padding: 6px 10px 4px;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+  footer a{
+    text-decoration:underline;
+  }

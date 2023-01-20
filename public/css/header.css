@@ -1,0 +1,161 @@
+:root {
+    --main-color: #f70061;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  body {
+    line-height: 1.5;
+  }
+  
+  .search i {
+    position: relative;
+    left: 30px;
+    color: #ddd;
+  }
+  
+  h3 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .top-banner-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(26, 26, 26);
+  }
+  
+  .top-banner-img img {
+    margin: 0 auto;
+  }
+  
+  .top {
+    width: 1120px;
+    margin: 0 auto;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+  }
+  
+  .search {
+    display: flex;
+    align-items: center;
+    width: 550px;
+  }
+  
+  .search-bar {
+    font-size: 14px;
+    width: 100%;
+    padding: 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .user ul{
+    display: flex;
+  }
+
+  .user li {
+    margin-right: 10px;
+    border-radius: 3px;
+  }
+  
+  .enter {
+    padding: 3px 10px;
+    font-weight: bold;
+    font-size: 12px;
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: #ffffff;
+  }
+  
+  nav {
+    width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 3px;
+  }
+  
+  nav ul {
+    margin-right: 190px;
+    height: 33px;
+    display: flex;
+    align-items: center;
+  }
+  
+  nav li {
+    padding: 0 9px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline;
+  }
+  
+  .underline {
+    width: 100%;
+    margin-bottom: 32px;
+    background-color: #dddddd;
+    height: 1px;
+  }
+  
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .sale {
+    color: var(--main-color);
+  }
+  
+  .woman {
+    color: #0c00ff;
+  }
+  
+  .handbag {
+    color: #f46b24;
+  }
+  
+  .beauty {
+    color: #00d26d;
+  }
+  
+  .etc {
+    color: #ccc;
+  }
+
+  .cart-count{
+    border: 1px solid white;
+    position: relative;
+    top: -15px;
+    left: 8px;
+    display: flex;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    margin-right: 7px;
+  }
+
+  .loginTrue{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid black;
+  }
+
+  .loginTrue p {
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+  }

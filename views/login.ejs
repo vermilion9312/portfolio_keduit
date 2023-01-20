@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Helvetica Neue,Helvetica,Apple SD Gothic Neo,Arial,sans-serif;
+        }
+        .title {
+            font-size: 24px;
+        }
+        .smallFont {
+            font-size: 12px;
+        }
+        .input {
+            width: 360px;
+            height: 40px;
+        }
+        input::placeholder {
+            font-size: 16px;
+            padding: 6px;
+        }
+        .loginBtn {
+            width: 360;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("top.ejs") -%>
+
+    <div align="center">
+        <form action="login_pro">
+            <table>
+                <tr>
+                    <td class="title"><strong font-weight="700">웰컴 투</strong></td>
+                </tr>
+                <tr>
+                    <td class="title">서울스토어</td>
+                </tr>
+                <tr style="height: 21px;">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="smallFont"><strong>아이디</strong></td>
+                </tr>
+             
+                <tr>
+                    <td style="height: 6px;"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="usrId" placeholder="아이디를 입력하세요." class="input"></td>
+                </tr>
+                <tr style="height: 15px;">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="smallFont"><strong>비밀번호</strong></td>
+                </tr>
+                <tr>
+                    <td style="height: 6px;"></td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="usrPw1" placeholder="비밀번호를 입력하세요." class="input"></td>
+                </tr>
+                <tr style="height: 15px;">
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td class="loginBtn">
+                        <input type="submit" value="로그인" style="width: 368px; height: 40px; background-color: #333333; color:white; border-radius: 3px; font-size: 16px;" align="center">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <%- include("sns_login") -%> 
+</body>
+
+</html>

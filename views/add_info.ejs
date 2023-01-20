@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Helvetica Neue, Helvetica, Apple SD Gothic Neo, Arial, sans-serif;
+        }
+
+        .input {
+            width: 360px;
+            height: 40px;
+        }
+
+        input::placeholder {
+            font-size: 16px;
+            padding: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("top.ejs")-%>
+    <div align="center">
+        <form action="add_info_pro">
+            <table>
+                <tr style="height: 80px;">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong style="font-size: 24px;">회원가입</strong></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 24px;">회원정보를 입력해주세요.</td>
+                </tr>
+                <tr style="height: 8px;">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong style="font-size: 12px;">아이디</strong></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="usrId" value="" placeholder="사용하실 아이디를 입력하세요." class="input">
+                    </td>
+                </tr>
+                <tr style="height: 15px;">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong style="font-size: 12px;">비밀번호</strong></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" name="usrPw1" value="" placeholder="사용하실 비밀번호를 입력하세요." class="input">
+                    </td>
+                </tr>
+                <tr style="height: 15px;">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong style="font-size: 12px;">비밀번호 확인</strong></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" name="usrPw2" value="" placeholder="사용하실 비밀번호를 입력하세요." class="input">
+                    </td>
+                </tr>
+                <tr style="height: 15px;">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong style="font-size: 12px;">이름</strong></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="usrName" value="" placeholder="이름을 입력하세요." class="input"></td>
+                </tr>
+                <tr style="height: 15px;">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong style="font-size: 12px;">이메일 주소</strong></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="usrEmail" value="" placeholder="이메일 주소를 입력해 주세요." class="input">
+                    </td>
+                </tr>
+                <tr style="height: 15px;">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong style="font-size: 12px;">연락처</strong></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="usrContact" value="" placeholder="전화번호를 입력하세요." class="input">
+                    </td>
+                </tr>
+                <tr style="height: 15px;">
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="다음"
+                            style="width: 368px; height: 40px; background-color: #333333; color:white; border-radius: 3px; font-size: 16px;"
+                            align="center"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

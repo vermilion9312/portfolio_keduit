@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/icon" sizes="16x16" href="https://www.seoulstore.com/images/favicon/favicon_16px.jpg">
+    <link rel="icon" type="image/icon" sizes="32x32" href="https://www.seoulstore.com/images/favicon/favicon_32px.jpg">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://www.seoulstore.com/images/favicon/favicon_152px.png">
+    <script src="https://kit.fontawesome.com/0a218c2ef9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type = "text/css" href="css/reset.css" />
+    <link rel="stylesheet" type = "text/css" href="css/layout.css" />
+    <title>서울스토어</title>
+  </head>
+<body>
+
+    <% function sortPrdBySales(prdData) {
+        for(var i=0; i<prdData.length; i++) {
+            var maxNo = prdData[i]["salesQuantity"];
+            var maxIndex = i;
+      
+            for(var j=i; j<prdData.length; j++) {
+                if(maxNo < prdData[j]["salesQuantity"]) {
+                    maxNo = prdData[j]["salesQuantity"];
+                    maxIndex = j;
+                }
+            }
+      
+            var temp = prdData[i];
+            prdData[i] = prdData[maxIndex];
+            prdData[maxIndex] = temp;
+        }
+      }%>
+
+      <%sortPrdBySales(prdData)%>
+
+    <%- include ('header.ejs') %>
+    <section class="product-rank">
+      <div class="title">
+        <h3>베스트</h3>
+      </div>
+    
+      <div class="product-rank-div">
+        <%for(i=0; i<prdData.length; i++){%>
+          <%var prdPrice = prdData[i]["prdPrice"]/1;
+            var saleRatio = Math.floor((prdData[i]["dscntRate"] * 100))
+            var dscntPrice = prdPrice - parseInt(prdPrice * (prdData[i]["dscntRate"]/1))
+          %>
+          <form action="addCartPro">
+            <div class="product">
+              <a href="#"><img src=<%=prdData[i]["prdImg"]%>></a>
+              <input type="hidden" name="key" value="<%=prdData[i]["key"]%>">
+              <button onclick="location.href='addCartPro'" type="submit" class="go-cart"><i class="fa-solid fa-cart-plus fa-lg"></i></button>
+              <p class="rank-txt"><%=i+1%>위</p>
+              <p class="rank-underline"></p>
+              <a href="#"><p class="rank-txt-brand"><%=prdData[i]["brndName"]%></p></a>
+              <a href="#"><p class="rank-subtxt"><%=prdData[i]["prdName"]%></p></a>
+              <div class="price-container">
+                <p class="rank-subtxt price-sale"><%=saleRatio%>% <%=dscntPrice.toLocaleString()%></p>
+                <p class="rank-subtxt price"><%=prdPrice.toLocaleString()%></p>
+              </div>
+              <div class="label">
+                <%if(prdData[i]["newOrNot"]){%>
+                  <div class="new">
+                    <p>신상</p>
+                  </div>
+                  <%}%>
+                  <%if(prdData[i]["saleOrNot"]){%>
+                    <div class="sale1">
+                    <p>세일</p>
+                  </div>
+                  <%}%>
+              </div>
+              <div class="review_score">
+                <div class="review_score">
+                  <i class="fa-solid fa-heart fa-sm"></i>
+                  <p class="review_score_txt"><%=prdData[i]["likesAmt"]%></p>
+                </div>
+              </div>
+            </div>
+          </form>
+      <%}%>
+      </div>
+    </section>
+      <%- include ('footer.ejs') %>
+</body>
+</html>

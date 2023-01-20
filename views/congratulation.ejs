@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Helvetica Neue, Helvetica, Apple SD Gothic Neo, Arial, sans-serif;
+        }
+        .font {
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("top.ejs") -%>
+    <div align="center">
+        <table>
+            <tr>
+                <td class="font">
+                    <strong>회원가입</strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="font">
+                    서울스토어 회원이 되신 것을 축
+                </td>
+            </tr>
+            <tr>
+                <td class="font">
+                    하드립니다.
+                </td>
+            </tr>
+            <tr>
+                <td class="font">
+                    <%= usrDB[usrDB.length - 1].usrName %>님
+                    서울스토어에서 즐거운 쇼핑하세요
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form action="index">
+                        <input type="submit" value="쇼핑하러 가기"
+                            style="width: 368px; height: 40px; background-color: #333333; color:white; border-radius: 3px; font-size: 16px;"
+                            align="center">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

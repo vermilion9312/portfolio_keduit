@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/icon" sizes="16x16" href="https://www.seoulstore.com/images/favicon/favicon_16px.jpg">
+    <link rel="icon" type="image/icon" sizes="32x32" href="https://www.seoulstore.com/images/favicon/favicon_32px.jpg">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://www.seoulstore.com/images/favicon/favicon_152px.png">
+    <script src="https://kit.fontawesome.com/0a218c2ef9.js" crossorigin="anonymous"></script>
+    <title>서울스토어</title>
+    <link rel="stylesheet" href="css/header.css" />
+</head>
+<body>
+    <div class="top-banner-img">
+        <a href="https://www.seoulstore.com/events/1424880"><img src="https://images.seoulstore.com/48f1d72ac9b4cb58cb3912a6a8ef9294.jpg"></a>
+     </div>
+     <section class="top">
+       <div class="logo">
+         <a href="index"><img src="https://www.seoulstore.com/images/ss_logo_gnb.jpg" height="20px" /></a>
+       </div>
+       <div class="search">
+         <i class="fa-solid fa-magnifying-glass"></i>
+         <input class="search-bar" placeholder="어그·꼼파뇨·스퀘어라인" />
+       </div>
+       <div class="user">
+         <ul>
+           <a href="#"><li><i class="fa-regular fa-heart"></i></li></a>
+           <a href="addCartPro"><li><i class="fa-solid fa-cart-plus"></i><p class="cart-count"><%=cartDB.length%></p></li></a>
+           <%if(loginState){%>
+              <div class="loginTrue"><p>이</p></div>&nbsp;&nbsp;
+              <li><button class="enter" onclick="location.href='logout'">로그아웃</button></li>
+           <%} else{%>
+           <li><button class="enter" onclick="location.href='login'">입장하기</button></li>
+           <%}%>
+         </ul>
+       </div>
+     </section>
+     <nav>
+       <ul>
+         <a href="index"><li class="home">홈</li></a>
+         <a href="best"><li class="sale">베스트</li></a>
+         <a href="hoodie"><li class="woman">후드티</li></a>
+         <a href="handbag"><li class="handbag">핸드백</li></a>
+         <a href="beauty"><li class="beauty">뷰티</li></a>
+         <a href="new"><li class="etc">신상</li></a>
+         <li class="etc">|</li>
+         <a href="#"><li class="more">더보기</li></a>
+       </ul>
+       <div class="search-rank">
+         <p>실시간 인기 검색어</p>
+         <p>7위 패딩</p>
+       </div>
+     </nav>
+     <div class="underline"></div>
+</body>
+</html>

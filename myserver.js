@@ -1,7 +1,7 @@
 //server setting
 var express = require("express");
 var app = express();
-var port = 3111;
+var port = 80;
 
 app.listen(port, function(){
     console.log(`${port} server is working`);

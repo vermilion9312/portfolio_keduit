@@ -15,55 +15,7 @@
   <body>
 
 
-<!--prdData 순서 섞는 함수-->
-<%function sortPrdByKey(prdData) {
-    for(var i=0; i<prdData.length; i++) {
-      var maxNo = prdData[i]["key"];
-      var maxIndex = i;
 
-      for(var j=i; j<prdData.length; j++) {
-          if(maxNo < prdData[j]["key"]) {
-              maxNo = prdData[j]["key"];
-              maxIndex = j;
-          }
-      }
-
-      var temp = prdData[i];
-      prdData[i] = prdData[maxIndex];
-      prdData[maxIndex] = temp;
-  }
-};%>
-
-
-<%function prdOriginPrice(prdData) {
-  for(i=0; i<prdData.length; i++){
-    var isInclude = prdData[i]["prdPrice"].includes(",");
-  if(isInclude){
-    var reducdComma = prdData[i]["prdPrice"].split(",");
-    prdData[i]["prdPrice"] = reducdComma.join("");
-    prdData[i]["prdPrice"] = prdData[i]["prdPrice"];
-  }
-}};%>
-
-<% function sortPrdBySales(prdData) {
-  for(var i=0; i<prdData.length; i++) {
-      var maxNo = prdData[i]["salesQuantity"];
-      var maxIndex = i;
-
-      for(var j=i; j<prdData.length; j++) {
-          if(maxNo < prdData[j]["salesQuantity"]) {
-              maxNo = prdData[j]["salesQuantity"];
-              maxIndex = j;
-          }
-      }
-
-      var temp = prdData[i];
-      prdData[i] = prdData[maxIndex];
-      prdData[maxIndex] = temp;
-  }
-}%>
-
-    <%prdOriginPrice(prdData)%>
     <%- include ('header.ejs') %>
     <section class="banner">
     <div>
@@ -128,7 +80,6 @@
       </div>
     </section>
     
-    <%sortPrdBySales(prdData)%>
     <section class="product-rank">
       <div class="title">
         <h3>상품 랭킹</h3>
@@ -140,20 +91,20 @@
 
       <div class="product-rank-div">
         <%for(i=0; i<4; i++){%>
-          <%var prdPrice = prdData[i]["prdPrice"]/1;
-            var saleRatio = Math.floor((prdData[i]["dscntRate"] * 100))
-            var dscntPrice = prdPrice - parseInt(prdPrice * (prdData[i]["dscntRate"]/1))
+          <%var prdPrice = sortedPrdData[i]["prdPrice"]/1;
+            var saleRatio = Math.floor((sortedPrdData[i]["dscntRate"] * 100))
+            var dscntPrice = prdPrice - parseInt(prdPrice * (sortedPrdData[i]["dscntRate"]/1))
           %>
 
         <form action="addCartPro">
           <div class="product">
-            <a href="#"><img src=<%=prdData[i]["prdImg"]%>></a>
-            <input type="hidden" name="key" value="<%=prdData[i]["key"]%>">
+            <a href="#"><img src=<%=sortedPrdData[i]["prdImg"]%>></a>
+            <input type="hidden" name="key" value="<%=sortedPrdData[i]["prdNo"]%>">
             <button onclick="location.href='addCartPro'" type="submit" class="go-cart"><i class="fa-solid fa-cart-plus fa-lg"></i></button>
             <p class="rank-txt"><%=i+1%>위</p>
             <p class="rank-underline"></p>
-            <a href="#"><p class="rank-txt-brand"><%=prdData[i]["brndName"]%></p></a>
-            <a href="#"><p class="rank-subtxt"><%=prdData[i]["prdName"]%></p></a>
+            <a href="#"><p class="rank-txt-brand"><%=sortedPrdData[i]["brndName"]%></p></a>
+            <a href="#"><p class="rank-subtxt"><%=sortedPrdData[i]["prdName"]%></p></a>
             <div class="price-container">
               <p class="rank-subtxt price-sale"><%=saleRatio%>% <%=dscntPrice.toLocaleString()%></p>
               <p class="rank-subtxt price"><%=prdPrice.toLocaleString()%></p>
@@ -173,7 +124,7 @@
             <div class="review_score">
               <div class="review_score">
                 <i class="fa-solid fa-heart fa-sm"></i>
-                <p class="review_score_txt"><%=prdData[i]["likesAmt"]%></p>
+                <p class="review_score_txt"><%=sortedPrdData[i]["likesAmt"]%></p>
               </div>
             </div>
           </div>
@@ -182,7 +133,6 @@
       </div>
     </section>
 
-    <%sortPrdByKey(prdData)%>
     <section class="product-rank">
       <div class="title">
         <h3>단독 상품</h3>

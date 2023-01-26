@@ -49,7 +49,7 @@
           <form action="addCartPro">
             <div class="product">
               <a href="#"><img src=<%=prdData[i]["prdImg"]%>></a>
-              <input type="hidden" name="key" value="<%=prdData[i]["key"]%>">
+              <input type="hidden" name="prdNo" value="<%=prdData[i]["prdNo"]%>">
               <button onclick="location.href='addCartPro'" type="submit" class="go-cart"><i class="fa-solid fa-cart-plus fa-lg"></i></button>
               <p class="rank-txt"><%=i+1%>위</p>
               <p class="rank-underline"></p>

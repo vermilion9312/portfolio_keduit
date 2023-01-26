@@ -4,7 +4,7 @@ var conn_info = {
 	port : 3306,
 	user : "root",
 	password : "root",
-	database : "soeulstore",
+	database : "seoulstore",
     multipleStatements: true
 };
 
@@ -31,17 +31,23 @@ module.exports = function(app) {
             var sql2 = "INSERT INTO usr VALUES(?, ?, ?, ?, ?, ?, ?)";
             var inputData = [usrNo, usrId, usrPw1, usrPw2, usrName, usrEmail, usrContact];
             conn.query(sql2, inputData, function(error) {
+
                 conn.end();
-                res.redirect("congratulration");
+                res.redirect("cong");
             });
         });
 
     });
 
-    app.get("/congratulation", function(req, res) {
+    app.get("/cong", function(req, res) {
         var conn = mysql.createConnection(conn_info);
-        conn.query()
-        res.render("usr/congratulation.ejs", renderData);
+        var sql = "SELECT * FROM usr";
+        conn.query(sql, function(error, rows) {
+            var renderData = {
+                "usrDB": rows
+            }
+            res.render("usr/cong.ejs", renderData);
+        })
     });
 
     app.get("/login", function(req, res) {

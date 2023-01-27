@@ -1,3 +1,4 @@
+const { query } = require("express");
 var mysql = require("mysql");
 var conn_info = {
 	host : "localhost",
@@ -96,10 +97,13 @@ module.exports = function (app) {
 	});
 	
 	app.get("/hoodie", function(req, res){
-		var prdData = req.session.prdData;
-		var cartDB = req.session.cartDB;
-			var usrDB = req.session.usrDB;
 		var loginState = req.session.loginState;
+
+		var conn = mysql.createConnection(conn_info);
+		var sql = "SELECT * FROM prd";
+		conn.query(sql, function(error, rows) {
+			
+		})
 		var renderData = {
 			"prdData": prdData,
 			"cartDB": cartDB,

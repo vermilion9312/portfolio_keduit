@@ -56,24 +56,26 @@ module.exports = function(app) {
     });
 
     app.get("/login_pro", function(req, res) {
-        var usrDB = req.session.usrDB;
         var usrId = req.query.usrId;
         var usrPw1 = req.query.usrPw1;
         
-        var check = loginCheck(usrDB, usrId, usrPw1);
-
-        if (check == true) {
-            var loginState = true;
-
-            req.session.loginState = loginState;
-            res.redirect("index");
-        } else {
-            res.send(
-                `<script>
-                alert('아이디와 비밀번호가 일치하지 않습니다.');
-                </script>`
-            );
-        };
+        var conn = mysql.createConnection(conn_info);
+        var sql = "SELECT * FROM usr WHERE usrId = ? AND usrPw1 = ?";
+        var inputData = [usrId, usrPw1];
+        conn.query(sql, inputData, function(error, rows) {
+            var location = "";
+            console.log(error);
+            console.log(rows);
+            if (rows[0] == null) {
+                location = "login";
+            } else {
+                location = "index";
+                var loginState = true;
+                req.session.loginState = loginState;
+            }
+            conn.end();
+            res.redirect(location);
+        })
     });
 
     app.get("/signup", function(req, res) {
